@@ -28,13 +28,10 @@
 							});
 						});
 
-						$("#registerBtn")
-								.on(
-										"click",
-										function() {
+						$("#registerBtn").on("click",function() {
 											var title = $("#tilte");
 											var content = $("#content");
-											var wirter = $("#writer");
+											var writer = $("#writer");
 
 											var titleVal = title.val();
 											var contentVal = content.val();
@@ -46,32 +43,17 @@
 												writer : writerVal
 											};
 
-											$
-													.ajax({
+											$.ajax({
 														type : "POST",
 														url : "/boards",
-														data : JSON
-																.stringify(boardObject),
+														data : JSON.stringify(boardObject),
 														contentType : "application/json; charset=UTF-8",
-														success : function(
-																result) {
-															console
-																	.log("result"
-																			+ result);
-
+														success : function(result) {
+															console.log("result"+ result);
 															alert(result);
 														},
-														error : function(
-																request,
-																status, error) {
-															alert("code: "
-																	+ request.status
-																	+ "\n"
-																	+ "message: "
-																	+ request.responseText
-																	+ "\n"
-																	+ "error."
-																	+ error);
+														error : function(equest,status, error) {
+															alert("code: "+ request.status+ "\n"+ "message: "+ request.responseText+ "\n"+ "error."+ error);
 														}
 													});
 										});
@@ -92,10 +74,7 @@
 							});
 						});
 
-						$("#modifyBtn")
-								.on(
-										"click",
-										function() {
+						$("#modifyBtn").on("click",function() {
 											var boardNo = $("#boardNo");
 											var title = $("#title");
 											var content = $("#content");
@@ -111,24 +90,50 @@
 												content : contentVal,
 												writer : writerVal
 											};
-											$
-													.ajax({
+											$.ajax({
 														type : "PUT",
-														url : "/boards/"
-																+ boardNoVal,
-														data : JSON
-																.stringify(boardObject),
+														url : "/boards/"+ boardNoVal,
+														data : JSON.stringify(boardObject),
 														contentType : "application/json; charset=UTF-8",
-														success : function(
-																result) {
-															console
-																	.log("result: "
-																			+ result);
+														success : function(result) {
+															console.log("result: "+ result);
 															alert(result);
 														}
 													});
 										});
+						$("#getJsonBtn").on("click",function(){
+							var boardNo = $("#boardNo");
+							var boardNoVal = boardNo.val();
+							
+							console.log(boardNoVal);
+							
+							$.getJSON("/boards/"+boardNoVal, function(data){
+								console.log(data);
+								alert(JSON.stringify(data));
+							})
+						})
+					$("#postBtn").on("click",function(){
+						var title = $("#title");
+						var content = $("#content");
+						var writer = $("#writer");
+						
+						var titleVal = title.val();
+						var contentVal = content.val();
+						var writerVal = writer.val();
+						
+						var boardObject = {
+								title : titleVal,
+								content : contentVal,
+								writer : writerVal
+						};
+						
+						$.post("/boards",boardObject, function(data){
+							console.log(data);
+							alert(JSON.stringify(data));
+						});
 					});
+			});
+					
 </script>
 <body>
 	<h1>Ajax Home</h1>
@@ -144,6 +149,8 @@
 		<button id="registerBtn">REGISTER</button>
 		<button id="deleteBtn">DELETE</button>
 		<button id="modifyBtn">MODIFY</button>
+		<button id="getJsonBtn">GETJSON</button>
+		<button id="postBtn">POST</button>
 	</div>
 </body>
 </html>

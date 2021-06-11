@@ -26,8 +26,8 @@ public class SwaggerConfig {
 	
 	private ApiInfo metadata() {
 		return new ApiInfoBuilder()
-				.title("Image Shop")
-				.description("Image Shop Rest API")
+				.title("Boards")
+				.description("Boards API")
 				.version("1.0")
 				.build();
 	}
@@ -38,7 +38,7 @@ public class SwaggerConfig {
 				.groupName("basic")
 				.select()
 				.apis(RequestHandlerSelectors.any())
-				.paths(PathSelectors.any())
+				.paths(PathSelectors.ant("/boards/*"))
 				.build()
 				.apiInfo(metadata());
 	}

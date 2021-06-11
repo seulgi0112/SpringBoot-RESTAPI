@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/boards")
 public class BoardController {
 
-	@GetMapping
+	@GetMapping("/")
 	public ResponseEntity<List<Board>> list(){
 		log.info("list");
 		
@@ -55,9 +55,12 @@ public class BoardController {
 		return entity;
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public ResponseEntity<String> register(@RequestBody Board board){
 		log.info("register");
+		log.info("Title" + board.getTitle());
+		log.info("Cotent" + board.getContent());
+		log.info("Writer" + board.getWriter());
 		
 		ResponseEntity<String> entity = new ResponseEntity<>("SUCCESS", HttpStatus.OK);
 		return entity;
