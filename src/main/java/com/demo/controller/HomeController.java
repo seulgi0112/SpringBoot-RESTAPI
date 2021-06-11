@@ -34,6 +34,9 @@ public class HomeController {
 	
 		return "ajaxHome";
 	}
-	
+	@GetMapping("/ajaxMember")
+	public String ajaxMember() {
+		return "ajaxMember";
+	}
 	
 }

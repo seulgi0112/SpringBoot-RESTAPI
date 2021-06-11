@@ -2,6 +2,7 @@ package com.demo.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
@@ -11,6 +12,7 @@ import lombok.ToString;
 //@RequiredArgsConstructor
 @ToString
 @Builder
+@Getter
 public class Member {
 
 	private String userId;
