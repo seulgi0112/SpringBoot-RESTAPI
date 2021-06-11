@@ -92,7 +92,8 @@ public class BoardController {
 		return entity;
 	}
 	
-	@PutMapping("/{boardNo}")
+	//consumes : content-Type
+	@PutMapping(value="/{boardNo}",consumes="application/json")
 	public ResponseEntity<String> modify(@PathVariable("boardNo") int boardNo, @RequestBody Board board){
 		log.info("modify");
 		
