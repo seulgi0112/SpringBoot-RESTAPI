@@ -1,11 +1,16 @@
 package com.demo.controller;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.IOUtils;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -117,4 +122,58 @@ public class MemberController {
 						.build();
 				return new ResponseEntity<Member>(member1,HttpStatus.OK);
 			}	
+			//Byte Type으로 이미지 전송
+			@GetMapping("/register11")
+			public ResponseEntity<byte[]> register11() throws Exception{
+				log.info("register11");
+				
+				InputStream in = null;
+				ResponseEntity<byte[]> entity = null;
+				
+				try {
+					HttpHeaders headers = new HttpHeaders();	
+					
+					in = new FileInputStream("C:\\Users\\지슬기\\Pictures\\123.JPG");
+					
+					headers.setContentType(MediaType.IMAGE_JPEG);
+					
+					entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in),headers,HttpStatus.CREATED);
+				}
+				catch(Exception e) {
+					e.printStackTrace();
+					entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
+				}finally {
+					in.close();
+				}
+				return entity;
+			}
+			
+			//Byte Type으로 이미지 전송
+			@GetMapping("/register12")
+			public ResponseEntity<byte[]> register12() throws Exception{
+				log.info("register11");
+				
+				String fileName = "123.zip";
+				
+				InputStream in = null;
+				ResponseEntity<byte[]> entity = null;
+				
+				try {
+					HttpHeaders headers = new HttpHeaders();	
+					
+					in = new FileInputStream("C:\\Users\\지슬기\\Documents\\" + fileName);
+					
+					headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+					headers.add("Content-Disposition", "attachment; filename=\""  + new String(fileName.getBytes("UTF-8"), "ISO-8859-1")+"\"");
+					
+					entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in),headers,HttpStatus.CREATED);
+				}
+				catch(Exception e) {
+					e.printStackTrace();
+					entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
+				}finally {
+					in.close();
+				}
+				return entity;
+			}
 }
