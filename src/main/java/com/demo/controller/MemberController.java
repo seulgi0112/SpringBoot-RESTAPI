@@ -1,8 +1,12 @@
 package com.demo.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -60,4 +64,57 @@ public class MemberController {
 		
 		return list;
 	}	
+	
+	
+	//Collection Map Type
+		@GetMapping(value="/register05")
+		public Map<String, Member> register05() {
+			log.info("register05");
+			
+			Map<String, Member> map = new HashMap<String, Member>();
+			
+			Member member1 = Member.builder()
+					.userId("id1")
+					.password("pass")
+					.userName("Name1")
+					.build();
+			map.put("key1",member1);
+			
+			Member member2 = Member.builder()
+					.userId("id2")
+					.password("pass2")
+					.userName("Name2")
+					.build();
+			map.put("key2",member2);
+			
+			return map;
+		}	
+		
+		
+		//Response Entity<Void> Type : response 시 http 헤더와 내용 가공
+			@GetMapping(value="/register06")
+			public ResponseEntity<Void> register06() {
+				log.info("register06");
+				return new ResponseEntity<Void>(HttpStatus.OK);
+			}	
+			
+			//Response Entity<String> Type : response 시 http 헤더와 문자열 데이터 전달
+			@GetMapping(value="/register07")
+			public ResponseEntity<String> register07() {
+				log.info("register07");
+				return new ResponseEntity<String>("HELLO",HttpStatus.OK);
+			}	
+			
+			//Response Entity<Class> Type : response 시 http 헤더와 객체 데이터 전달
+			@GetMapping(value="/register08")
+			public ResponseEntity<Member> register08() {
+				log.info("register08");
+				
+				Member member1 = Member.builder()
+						.userId("id1")
+						.password("pass")
+						.userName("Name1")
+						.build();
+				return new ResponseEntity<Member>(member1,HttpStatus.OK);
+			}	
 }
