@@ -109,3 +109,33 @@ Swagger는 REST API 문서를 만들어주는 프레임워크
 ✔ @RequestBody : 요청 본문 내용 
 
 ✔ @CookieValue :  쿠키 값
+
+
+
+### 👓 입력 유효성 검증
+
+스프링의 Bean Validation 기능을 이용해 도메인 클래스의 입력값을 검증할 수 있다. 
+
+controller에서 입력값을 검증할 도메인에 @Validated를 지정해서 사용한다.
+
+build.gradle에 아래 dependencies를 추가해준다.
+
+`implementation 'org.springframework.boot:spring-boot-starter-validation'`
+
+
+
+**❓ 입력값 검증 Annotation**
+
+@NotBlank : 공백확인
+
+@Size(max = 3) : 길이 확인
+
+**❓ 오류 처리 Annotation**
+
+@hasErrors() : 오류 확인
+
+@hasGlobalErrors() : 객체 레벨의 오류 확인
+
+@hasFieldErrors() : 필드 레벨의 오류 확인
+
+@hasFieldErrors(String) : 인수에 지정한 필드 오류 확인
