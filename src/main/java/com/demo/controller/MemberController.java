@@ -14,6 +14,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.domain.Member;
@@ -183,6 +185,31 @@ public class MemberController {
 				
 				log.info("register010");
 				log.info("userId = " + userId);
+				
+				ResponseEntity<String> entity = new ResponseEntity<String>("SUCCESS",HttpStatus.OK);
+				
+				return entity;
+			}
+			
+			@GetMapping("/register/{userId}/{password}")
+			public ResponseEntity<String> register011(@PathVariable("userId") String userId, @PathVariable("password") String password){
+				
+				log.info("register011");
+				log.info("userId = " + userId);
+				log.info("password = " + password);
+				
+				ResponseEntity<String> entity = new ResponseEntity<String>("SUCCESS",HttpStatus.OK);
+				
+				return entity;
+			}
+			
+			
+			@PostMapping("/register012")
+			public ResponseEntity<String> register012(@RequestParam("userId") String userId, @RequestParam("password") String password){
+				
+				log.info("register012");
+				log.info("userId = " + userId);
+				log.info("password = " + password);
 				
 				ResponseEntity<String> entity = new ResponseEntity<String>("SUCCESS",HttpStatus.OK);
 				
