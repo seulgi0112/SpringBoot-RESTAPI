@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.domain.Member;
@@ -176,4 +177,16 @@ public class MemberController {
 				}
 				return entity;
 			}
+			
+			@GetMapping("/register/{userId}")
+			public ResponseEntity<String> register010(@PathVariable("userId") String userId){
+				
+				log.info("register010");
+				log.info("userId = " + userId);
+				
+				ResponseEntity<String> entity = new ResponseEntity<String>("SUCCESS",HttpStatus.OK);
+				
+				return entity;
+			}
+			
 }
