@@ -126,9 +126,17 @@ build.gradle에 아래 dependencies를 추가해준다.
 
 **❓ 입력값 검증 Annotation**
 
-@NotBlank : 공백확인
+@NotBlank : null이 아니고 trim한 길이가 0보다 큰지 검사
 
-@Size(max = 3) : 길이 확인
+@NotNull : 빈 값이 아닌지 검사
+
+@Size(max = 3) : 길이 검사
+
+@Email : 이메일 형식 검사
+
+@Past : 과거 날짜인지 검사
+
+@Future : 미 래날짜인지 검사
 
 **❓ 오류 처리 Annotation**
 
