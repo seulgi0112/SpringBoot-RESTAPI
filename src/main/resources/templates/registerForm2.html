@@ -13,11 +13,13 @@ $(document).ready(function() {
 		var userId01 = $("#userId");
 		var password01 = $("#password");
 		var userName = $("#userName");
+		var dateOfBirth = $("#dateOfBirth");
 		var email = $("#email");
 		
 		var userId01Val = userId01.val();
 		var password01Val = password01.val();
 		var userNameVal = userName.val();
+		var dateOfBirthVal = dateOfBirth.val();
 		var emailVal = email.val();
 		
 		var genderVal = $('input[name="gender"]:checked').val();
@@ -30,6 +32,7 @@ $(document).ready(function() {
 				password : password01Val,
 				userName : userNameVal,
 				email : emailVal,
+				dateOfBirth : dateOfBirthVal,
 				gender : genderVal
 		};
 	
@@ -56,27 +59,31 @@ $(document).ready(function() {
 <h1>Register Form</h1>
 <div>
 	<table>
-	<tr>
-	<td>유저ID</td>
-	<td><input id="userId" name="userId" type="text" value=""/></td>
-	</tr>
-	<tr>
-	<td>패스워드</td>
-	<td><input id="password" type="password" value=""/></td>
-	</tr>
-	<tr> 
-	<td>이름</td>
-	<td><input id="userName" type="text" value=""/></td>
-	</tr>
-	<tr> 
-	<td>E-MAIL</td>
-	<td><input id="email" type="text" value=""/></td>
-	</tr>
-	<tr> 
-	<td>성별</td>
-	<td><input id="gender1" type="radio" value="male"/><label for="gender1">Male</label></td>
-	<td><input id="gender2" type="radio" value="female"/><label for="gender2">Female</label></td>
-	</tr>
+		<tr>
+			<td>유저ID</td>
+			<td><input id="userId" name="userId" type="text" value=""/></td>
+		</tr>
+		<tr>
+			<td>패스워드</td>
+			<td><input id="password" type="password" value=""/></td>
+		</tr>
+		<tr> 
+			<td>이름</td>
+			<td><input id="userName" type="text" value=""/></td>
+		</tr>
+		<tr> 
+			<td>E-MAIL</td>
+			<td><input id="email" type="text" value=""/></td>
+		</tr>
+		<tr> 
+			<td>생년월일</td>
+			<td><input id="dateOfBirth" type="date" value=""/></td>
+		</tr>
+		<tr> 
+			<td>성별</td>
+			<td><input id="gender1" name="gender" type="radio" value="male"/><label for="gender1">Male</label></td>
+			<td><input id="gender2" name="gender" type="radio" value="female"/><label for="gender2">Female</label></td>
+		</tr>
 	</table>
 	<button id="registerBtn">register</button>
 
