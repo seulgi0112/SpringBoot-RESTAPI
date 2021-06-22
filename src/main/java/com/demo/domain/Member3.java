@@ -3,6 +3,7 @@ package com.demo.domain;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -26,8 +27,10 @@ public class Member3 {
 	
 	private String email;
 	
+	@Valid
 	private Address Address;
 	
+	@Valid
 	private List<Card> cardList;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
