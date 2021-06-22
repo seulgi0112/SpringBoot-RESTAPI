@@ -20,7 +20,7 @@ public class HomeController {
 	
 		LocalDateTime now = LocalDateTime.now();
 		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyy³â M¿ù dÀÏ (E) a h½Ã mºÐ sÃÊ");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyyï¿½ï¿½ Mï¿½ï¿½ dï¿½ï¿½ (E) a hï¿½ï¿½ mï¿½ï¿½ sï¿½ï¿½");
 		
 		String formattedNow = now.format(formatter);
 		
@@ -31,9 +31,14 @@ public class HomeController {
 	
 	@GetMapping("/ajaxHome")
 	public String ajaxHome() {
-	
 		return "ajaxHome";
 	}
+	
+	@GetMapping("/ajaxHome2")
+	public String ajaxHome2() {
+		return "ajaxHome2";
+	}
+	
 	@GetMapping("/ajaxMember")
 	public String ajaxMember() {
 		return "ajaxMember";
