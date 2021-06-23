@@ -31,4 +31,14 @@ public class GrettingController {
 		return new ResponseEntity<String>(message,HttpStatus.OK);
 	}
 	
+	@GetMapping(value = "/welcome2", produces = "text/plain;charset=UTF-8")
+	public ResponseEntity<String> welcome2(){
+		
+		String message = messageSource.getMessage("welcome.message2",null ,Locale.KOREAN);
+		
+		log.info("Welcome message : " + message);
+	
+		return new ResponseEntity<String>(message,HttpStatus.OK);
+	}
+	
 }
